@@ -1,1 +1,2 @@
 # Project-4-OOP Game Show App
+This project is a Game that will allow users to guess letters to formulate  stored words that ultimately will display several phrases from various movies. Similar to Hang Man, the user will lose points or a heart in this case when a letter is guessed wrong. 
