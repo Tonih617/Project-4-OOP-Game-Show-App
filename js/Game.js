@@ -31,7 +31,10 @@ startGame() {//Hides the  initial overlay
      if(this.activePhrase.checkLetter(button.innerText)){//checking to see if the letter has been selected to display or disable//
          button.classList.add("chosen");// If the letter chosen is apart of the phrase button will display as chosen//
         this.activePhrase.showMatchedLetter(button.innerText);// will disable and shadow out letter after it has been matched//
-        
+     }else if(removeLife); {
+         
+     } 
+     }
     // }else{
     //    document.innerText.removeLife('scoreboard');
     //     var tries = document.getElementsByClassName("tries");
@@ -49,8 +52,8 @@ startGame() {//Hides the  initial overlay
         // 
         // remove('tries'); 
      };
-    }    
- }
+        
+ 
 
 
 
