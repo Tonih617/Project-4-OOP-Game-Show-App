@@ -22,6 +22,31 @@ startGame() {//Hides the  initial overlay
     this.activePhrase.addPhraseToDisplay();// adds phrases to the game//
 
 }; 
+
+ removeLife(){
+     const images = document.getElementsByTagName("img");
+     images[this.missed].src="images/lostHeart.png";
+     this.missed ++;
+     
+ }
+
+ 
+
+ checkForWin(){
+     let hiddenLetters = document.querySelectorAll('hide');
+     if(hiddenLetters.length === 0){
+         return true;
+     }else{
+         return false;
+        
+     }  
+    
+    }
+    gameOver(){
+        if(this.missed.length === 0){
+        alert("game over");
+    }
+    }
 // const letter = ("keyrow");
 //*CREATING MY HANDLE INTERACTION FUNCTION*//
  
@@ -31,9 +56,16 @@ startGame() {//Hides the  initial overlay
      if(this.activePhrase.checkLetter(button.innerText)){//checking to see if the letter has been selected to display or disable//
          button.classList.add("chosen");// If the letter chosen is apart of the phrase button will display as chosen//
         this.activePhrase.showMatchedLetter(button.innerText);// will disable and shadow out letter after it has been matched//
-     }else if(removeLife); {
-         
+     }else{this.removeLife() 
+        if (this.missed.length === 0) {
+         alert("game over");
      } 
+            
+        
+            
+       
+            
+        }
      }
     // }else{
     //    document.innerText.removeLife('scoreboard');
@@ -49,17 +81,16 @@ startGame() {//Hides the  initial overlay
 
 
 
-        // 
+       // 
         // remove('tries'); 
-     };
-        
- 
+     }
+    
 
 
 
 
  
 
+    
 
-
- 
+    

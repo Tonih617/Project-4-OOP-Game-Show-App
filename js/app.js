@@ -31,7 +31,7 @@ const reset = ('btn__reset');
 const startButton = document.getElementById('btn__reset');
 const button = document.getElementById('qwerty');
 const life = document.getElementById('tries');
-const removeLife = ('remove');
+//const removeLife = ('remove');
 const letter = ('letter');
 
 startButton.addEventListener('click',() => {//adding an event listener to the start button//
@@ -43,7 +43,7 @@ startButton.addEventListener('click',() => {//adding an event listener to the st
       game.handleInteraction(event.target);
       
     }
-    
+          
   });   
     
   
