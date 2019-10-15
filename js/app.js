@@ -32,7 +32,19 @@ const startButton = document.getElementById('btn__reset');
 const button = document.getElementById('qwerty');
 const life = document.getElementById('tries');
 //const removeLife = ('remove');
+const images = ('photos');
 const letter = ('letter');
+this.secretWord = "";
+this.letters = [];
+this.guessedLetter = "";
+this.errorsLeft = 5;
+this.messages = {
+  win: "You won!",
+  loose: "Game over!",
+  guessed: "You already guessed this letter, please try again..",
+  notValidLetter: "Please enter a valid letter from a-z",
+  
+}
 
 startButton.addEventListener('click',() => {//adding an event listener to the start button//
     game.startGame();

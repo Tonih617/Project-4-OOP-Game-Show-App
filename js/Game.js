@@ -16,36 +16,41 @@ class Game {
     return this.phrases[Math.floor ((Math.random(phrase) * 5))];
 }  
 startGame() {//Hides the  initial overlay
-    const overlay = document.querySelector('#overlay');//creating an overly varible using the query selector method//
+    const overlay = document.querySelector('#overlay');//creating an overlay varible using the query selector method//
     overlay.style.display = 'none';//hides the intitial overlay// 
     this.activePhrase = this.getRandomPhrase();//grabs a Phrase object from the list of phrases// 
     this.activePhrase.addPhraseToDisplay();// adds phrases to the game//
 
 }; 
 
- removeLife(){
-     const images = document.getElementsByTagName("img");
-     images[this.missed].src="images/lostHeart.png";
-     this.missed ++;
-     
+ removeLife(){//remove Method, replaces liveheart.png with girl-emoji.png//
+     const photos = document.getElementsByTagName("images");
+     photos[this.missed].src="images/girl-emoji.png";
+     this.missed ++;//increases the counter by one//
+     if (this.missed === 5) {
+        this.gameOver("lose");
+    }   
  }
 
  
+  checkForWin(){
+     let hiddenLetters = document.querySelectorAll('.hide');
+     if (hiddenLetters.length === 0) {
+         this.gameOver('win');
+     }
+     
+ }
+ 
+      
+     gameOver(winOrLose){
+    const overlay = document.querySelector('#overlay');//creating an overly varible using the query selector method//
+    overlay.style.display = '';//displays the intitial overlay after game is won or lost//
+    if(winOrLose == "lose"){
+        alert("sorry you lost!");
 
- checkForWin(){
-     let hiddenLetters = document.querySelectorAll('hide');
-     if(hiddenLetters.length === 0){
-         return true;
-     }else{
-         return false;
-        
-     }  
-    
-    }
-    gameOver(){
-        if(this.missed.length === 0){
-        alert("game over");
-    }
+    }else{
+        alert("congratulations you won!");
+      }
     }
 // const letter = ("keyrow");
 //*CREATING MY HANDLE INTERACTION FUNCTION*//
@@ -57,16 +62,16 @@ startGame() {//Hides the  initial overlay
          button.classList.add("chosen");// If the letter chosen is apart of the phrase button will display as chosen//
         this.activePhrase.showMatchedLetter(button.innerText);// will disable and shadow out letter after it has been matched//
      }else{this.removeLife() 
-        if (this.missed.length === 0) {
+        if (this.missed.length === 5) {
          alert("game over");
      } 
             
-        
+       
             
        
             
-        }
      }
+     
     // }else{
     //    document.innerText.removeLife('scoreboard');
     //     var tries = document.getElementsByClassName("tries");
@@ -86,11 +91,11 @@ startGame() {//Hides the  initial overlay
      }
     
 
-
+    }
 
 
  
 
     
-
+//}
     
