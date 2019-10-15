@@ -24,11 +24,11 @@ startGame() {//Hides the  initial overlay
 }; 
 
  removeLife(){//remove Method, replaces liveheart.png with girl-emoji.png//
-     const photos = document.getElementsByTagName("images");
-     photos[this.missed].src="images/girl-emoji.png";
+     const images = document.getElementsByTagName("img");
+     images[this.missed].src="images/Crying-Emoji.png";
      this.missed ++;//increases the counter by one//
      if (this.missed === 5) {
-        this.gameOver("lose");
+        this.gameOver();
     }   
  }
 
@@ -47,9 +47,13 @@ startGame() {//Hides the  initial overlay
     overlay.style.display = '';//displays the intitial overlay after game is won or lost//
     if(winOrLose == "lose"){
         alert("sorry you lost!");
+        overlay.classList.remove('win');
+        overlay.classList.add('lose');
 
     }else{
         alert("congratulations you won!");
+        overlay.classList.remove('lose');
+        overlay.classList.add('win');
       }
     }
 // const letter = ("keyrow");
@@ -61,9 +65,15 @@ startGame() {//Hides the  initial overlay
      if(this.activePhrase.checkLetter(button.innerText)){//checking to see if the letter has been selected to display or disable//
          button.classList.add("chosen");// If the letter chosen is apart of the phrase button will display as chosen//
         this.activePhrase.showMatchedLetter(button.innerText);// will disable and shadow out letter after it has been matched//
-     }else{this.removeLife() 
+        if(this.checkForWin()){
+            this.gameOver();
+        }
+     }else{this.removeLife()
+        this.checkForWin();
+        button.classList.add("wrong");// If the letter chosen is apart of the phrase button will display as wrong// 
         if (this.missed.length === 5) {
          alert("game over");
+         
      } 
             
        
