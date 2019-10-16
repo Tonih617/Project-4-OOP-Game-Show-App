@@ -24,7 +24,7 @@
 // console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
 
-const game = new Game();//declaring and storing my varibles//
+let game;//declaring and storing my varibles//
 const btn_reset = ('startButton');
 const keyboard = ('qwerty');   
 const reset = ('btn__reset');
@@ -48,7 +48,8 @@ this.messages = {
 }
 
 startButton.addEventListener('click',() => {//adding an event listener to the start button//
-    game.startGame();
+  game =new Game();
+  game.startGame();
   });
   //Call startGame() method on new Game object
   button.addEventListener('click',(event) => {//adding an event listener to the start button//
