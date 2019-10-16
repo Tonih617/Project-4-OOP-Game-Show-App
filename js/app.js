@@ -34,6 +34,7 @@ const life = document.getElementById('tries');
 //const removeLife = ('remove');
 const images = ('images');
 const letter = ('letter');
+this.getHint = "";
 this.secretWord = "";
 this.letters = [];
 this.guessedLetter = "";

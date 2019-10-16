@@ -164,6 +164,20 @@ button {
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
 
+#clueButton {
+margin: 6px;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  color: var(--color-keys);
+  font-size: var(--font-size-medium);
+  background-color: var(--color-keys-light);
+  border-radius: 5px;
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
 
 /* Overlay */
 
