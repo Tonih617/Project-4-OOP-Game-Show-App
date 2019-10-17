@@ -64,20 +64,21 @@ startGame() {//Hides the  initial overlay
  handleInteraction(button){ //Defining the button attribute into the handle interaction function//
      button.disabled=true;//If the letter is not apart of the phrase the letter will be disabled//
      if(this.activePhrase.checkLetter(button.innerText)){//checking to see if the letter has been selected to display or disable//
-         button.classList.add('chosen');// If the letter chosen is apart of the phrase button will display as chosen//
+         button.classList.add('chosen','animated','flash');// If the letter chosen is apart of the phrase button will display as chosen//
         this.activePhrase.showMatchedLetter(button.innerText);// will disable and shadow out letter after it has been matched//
         if(this.checkForWin()){
             this.gameOver();
         }
-     }else{this.removeLife()
+     }else{
+        button.classList.add('wrong','animated','jello');// If the letter chosen is apart of the phrase button will display as wrong// 
+        this.removeLife()
         this.checkForWin();
-        button.classList.add('wrong');// If the letter chosen is apart of the phrase button will display as wrong// 
         if (this.missed.length === 5) {
          alert("game over");
          
      } 
     }
-}
+ }
 
     // const getClue = document.getElementById("clue");
     // // clue
@@ -109,11 +110,12 @@ startGame() {//Hides the  initial overlay
        img.src= 'images/girl-emoji.png';// Restore girl-emoji
                     
        });
-
+    
        this.activePhrase = null;
        $('.key').removeClass('chosen').removeClass('wrong');
        $('.key').prop('disabled', false);
 
+}
 
 
 
@@ -159,8 +161,8 @@ startGame() {//Hides the  initial overlay
     //   getClue.innerHTML = "";
       //context.clearRect(0, 0, 400, 400);
     //   reset();
-    // }
-} 
+     }
+ 
 
   
 
@@ -168,4 +170,4 @@ startGame() {//Hides the  initial overlay
 
     
 
-}   
+   
