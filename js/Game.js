@@ -3,18 +3,31 @@ class Game {
     constructor() {//*CREATING MY "GAME" CONSTRUCTOR METHOD*\\
         this.missed = 0;//sets the game at 0// 
         this.phrases = [//array of phrases used in the game//
-            new Phrase('nobody puts baby in a corner'),
-            new Phrase('live laugh love'),
+            new Phrase('nobody puts baby in a corner'),//this.getClues[0],
+            new Phrase('live laugh love'),//this
             new Phrase('are you feeling lucky'),
             new Phrase('one man wolf pack'),
             new Phrase('a little respect')]; 
+            this.getClue = 
+          ["Dirty Dancing", "die cry hate","Clint EastWood", "The HangOver", "A little bit goes a long way"];
         this.activePhrase = null;
+        this.activeHint = null;
+        this.getClueIndex;
     
         //return phrases;
     }
     getRandomPhrase(){//adding a get random phrase function to grab one phrase at random between 0-5//
-    return this.phrases[Math.floor ((Math.random(phrase) * 5))];
+        this.getClueIndex = Math.floor ((Math.random(phrase) * 5))
+        //this.activeHint = this.getClue[this.getClueIndex];
+       // console.log(this.activeHint);
+     return this.phrases[this.getClueIndex];//[Math.floor ((Math.random(phrase) * 5))];
 }  
+
+  gethint() {
+    this.activeHint = this.getClue[this.getClueIndex];
+    return this.activeHint;
+  }
+
 startGame() {//Hides the  initial overlay
     const overlay = document.querySelector('#overlay');//creating an overlay varible using the query selector method//
     overlay.style.display = 'none';//hides the intitial overlay// 
@@ -41,8 +54,9 @@ startGame() {//Hides the  initial overlay
      
  }
  
-      
+     
      gameOver(winOrLose){
+         
     const overlay = document.querySelector('#overlay');//creating an overly varible using the query selector method//
     overlay.style.display = '';//displays the intitial overlay after game is won or lost//
     if(winOrLose === "lose"){
@@ -66,35 +80,17 @@ startGame() {//Hides the  initial overlay
      if(this.activePhrase.checkLetter(button.innerText)){//checking to see if the letter has been selected to display or disable//
          button.classList.add('chosen','animated','flash');// If the letter chosen is apart of the phrase button will display as chosen//
         this.activePhrase.showMatchedLetter(button.innerText);// will disable and shadow out letter after it has been matched//
-        if(this.checkForWin()){
-            this.gameOver();
-        }
+        this.checkForWin();
      }else{
         button.classList.add('wrong','animated','jello');// If the letter chosen is apart of the phrase button will display as wrong// 
         this.removeLife()
-        this.checkForWin();
-        if (this.missed.length === 5) {
-         alert("game over");
-         
-     } 
+        
+    
     }
- }
-
-    // const getClue = document.getElementById("clue");
-    // // clue
-
-    // clue.onclick = function() {
-
-    //     clues = [
-    //       ["Dirty Dancing", "Clint EastWood", "The HangOver", "A little bit goes a long way"] 
-    //     ];
-  
-    //   const phraseIndex = categories.indexOf(chosen);
-    //   const clueIndex = chosen.indexOf(phrases);
-    //   getClue.innerHTML = "clue: - " +  clues [phraseIndex][clueIndex];
-    // };
-      
+}
+ 
      //loop through keyboard//
+
      gameReset() {
         let listItem = [];
         listItem = document.querySelectorAll('.letter');
@@ -112,56 +108,16 @@ startGame() {//Hides the  initial overlay
        });
     
        this.activePhrase = null;
-       $('.key').removeClass('chosen').removeClass('wrong');
-       $('.key').prop('disabled', false);
+        
+        let keys = [];
+       keys = document.querySelectorAll('.key');
+       keys.forEach(key => {                               // Enable all keys
+           key.removeAttribute("disabled");
+           key.className = "key";
+       });
 
 }
-
-
-
-        // keyrow.disabled=true;//If the letter is not apart of the phrase the letter will be disabled//
-        // if(this.activePhrase.checkLetter(button.innerText)){//checking to see if the letter has been selected to display or disable//
-        //     button.classList.add('chosen', 'animated', 'flash');
-
-        
-    //  let keyrow = [];
-    //  keyrow = document.querySelectorAll('.key');
-    //  console.log(keyrow);
-    //  //for (let i = 0; i < keyrow.length; i++) {
-    //  keyrow.forEach(key =>{    
-    //  key.classList.remove('chosen','wrong','animated','jello','flash');
-    //  key.className = 'key';
-    //  key.removeAttribute('disabled');
-     
-    //  });
-    //   }  
-     
-    //   let gameReset = reset('key');
-    //  // remove all existing classes from each key//
-    // for (var i = 0; i < keyrow.length; i++){
-    //     keyrow.innerHTML = "";
-    //     [].forEach.call('key', function(gameReset) {
-    //         keyrow.appendChild(reset);
-    //     });
-    //     keyrow[i].classList.remove("chosen", "wrong",);
-    //  }  
-    
-    
-
-     //removing
-        // function myFunction() {
-        //   document.getElementById("btn__reset").reset();
-        // }
-       
-     // Reset
-  
-    // document.getElementById('btn__reset').onclick = function() {
-      //win.parentNode.removeChild(win);
-      //letters.parentNode.removeChild(letters);
-    //   getClue.innerHTML = "";
-      //context.clearRect(0, 0, 400, 400);
-    //   reset();
-     }
+ }
  
 
   

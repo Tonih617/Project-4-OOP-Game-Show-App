@@ -42,12 +42,6 @@ addPhraseToDisplay() {// adds letter placeholders to the display when the game b
     for (let letter of button) {
         letter.classList.remove('hide');
         letter.classList.add('show');
-        //tries.classList.remove();
-    //} else { 
-    //document.getElementsByClassName(life).remove(); 
     } 
     }      
-    
-//  const phrase = new Phrase('Life is like a box of chocolates');
-//  console.log(`Phrase - phrase: ${phrase.phrase}`);
 }

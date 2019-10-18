@@ -34,6 +34,8 @@ const life = document.getElementById('tries');
 //const removeLife = ('remove');
 const images = ('images');
 const letter = ('letter');
+const getHint = ('hint');
+var getClue = document.getElementById("clueButton");
 this.getHint = "";
 this.secretWord = "";
 this.letters = [];
@@ -53,12 +55,20 @@ startButton.addEventListener('click',() => {//adding an event listener to the st
   });
   //Call startGame() method on new Game object
   button.addEventListener('click',(event) => {//adding an event listener to the start button//
+    
     if(event.target.nodeName === "BUTTON") {
       game.handleInteraction(event.target);
-      
+    
     }
           
   });   
+
+  getClue.addEventListener('click',() => {//adding an event listener to the hint button//
+    var clue =game.gethint();
+    var clueDiv = document.getElementById('clue')
+    clueDiv.innerText = clue;
+    console.log(clue);
+    });
     
   
 
