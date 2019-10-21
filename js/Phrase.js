@@ -23,25 +23,27 @@ addPhraseToDisplay() {// adds letter placeholders to the display when the game b
         }
     })
 }
+    //adding a check Letter method//
     checkLetter(letter) {
-    return this.phrase.includes(letter);
+    return this.phrase.includes(letter);//
     }
 
+    //adding a show matched letter method// 
     showMatchedLetter(letter) {
-    const button = document.getElementsByClassName(letter);
-    for (let letter of button) {
-        letter.classList.remove('hide');
-        letter.classList.add('show');
+    const button = document.getElementsByClassName(letter);//storing the button varible to the class name letter//
+    for (let letter of button) { //adding a for loop to go through the letters of the phrase and show matched letters//
+        letter.classList.remove('hide');//creating a remove method to hide letters not in phrase//
+        letter.classList.add('show');// creating a add method to show letters in phrase if guessed correctly//
     }
-    // button.classList.remove("hide");
-    // button.classList.add("show");
+    
     }
-
+    
+    //adding a missed letter method//
     missedLetter(letter) {
-    const button = document.getElementsByClassName(letter);
-    for (let letter of button) {
-        letter.classList.remove('hide');
-        letter.classList.add('show');
+    const button = document.getElementsByClassName(letter);//storing the button varible to the class name letter//
+    for (let letter of button) { //adding a for loop to go through the letters of the phrase and show matched letters//
+        letter.classList.remove('hide');//creating a remove method to hide letters not in phrase//
+        letter.classList.add('show');// creating a add method to show letters in phrase if guessed correctly//
     } 
     }      
 }

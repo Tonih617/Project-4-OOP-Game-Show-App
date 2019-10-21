@@ -49,7 +49,7 @@ startGame() {//Hides the  initial overlay
   checkForWin(){
      let hiddenLetters = document.querySelectorAll('.hide');
      if (hiddenLetters.length === 0) {
-         this.gameOver('win');
+         return true;
      }
      
  }
@@ -59,13 +59,14 @@ startGame() {//Hides the  initial overlay
          
     const overlay = document.querySelector('#overlay');//creating an overly varible using the query selector method//
     overlay.style.display = '';//displays the intitial overlay after game is won or lost//
+    const gameOverMessage = document.getElementById('game-over-message');
     if(winOrLose === "lose"){
-        alert("sorry you lost!");
+        gameOverMessage.textContent = "sorry you lost!";
         overlay.classList.remove('win');
         overlay.classList.add('lose');
 
-    }else{
-        alert("congratulations you won!");
+    }else {
+        gameOverMessage.textContent = "congratulations you won!";
         overlay.classList.remove('lose');
         overlay.classList.add('win');
       }
@@ -80,16 +81,20 @@ startGame() {//Hides the  initial overlay
      if(this.activePhrase.checkLetter(button.innerText)){//checking to see if the letter has been selected to display or disable//
          button.classList.add('chosen','animated','flash');// If the letter chosen is apart of the phrase button will display as chosen//
         this.activePhrase.showMatchedLetter(button.innerText);// will disable and shadow out letter after it has been matched//
-        this.checkForWin();
+        if (this.checkForWin() === true) {
+            this.gameOver('win');
+        }
      }else{
         button.classList.add('wrong','animated','jello');// If the letter chosen is apart of the phrase button will display as wrong// 
         this.removeLife()
+
         
-    
-    }
-}
+     }  
+     }
+
+
  
-     //loop through keyboard//
+      //loop through keyboard//
 
      gameReset() {
         let listItem = [];
@@ -106,8 +111,10 @@ startGame() {//Hides the  initial overlay
        img.src= 'images/girl-emoji.png';// Restore girl-emoji
                     
        });
-    
+        let clueDiv = document.querySelector("#clue");
+        clueDiv.innerText = "";
        this.activePhrase = null;
+       //this.activeHint = null;
         
         let keys = [];
        keys = document.querySelectorAll('.key');
@@ -118,7 +125,7 @@ startGame() {//Hides the  initial overlay
 
 }
  }
- 
+
 
   
 
